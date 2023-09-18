@@ -6,6 +6,7 @@ class MulchOrder(plantingBedDimensions: PlantingBedDimensions){
     init{
         plantingBedDimensionsList.add(plantingBedDimensions)
     }
+    lateinit var pricer: MulchPricer
 
     fun addPlantingBedDimensions(plantingBedDimensions: PlantingBedDimensions) {
         plantingBedDimensionsList.add(plantingBedDimensions)
@@ -23,27 +24,12 @@ class MulchOrder(plantingBedDimensions: PlantingBedDimensions){
         val totalRounded = ceil(totalConverted)
         return totalRounded.toInt()
     }
-
-    private fun getFinalPriceYards(): Double {
-        return CubicYardMulchPricer().calculatePrice(calculateCubicYards())
-    }
-
-    private fun getFinalPriceFeet(): Double {
-        return CubicFootMulchPricer().calculatePrice(calculateCubicYards())
-    }
-
-
-    fun printOrderDetails(footPrice: Double){
+    fun printOrderDetails(){
         for (dimensions in plantingBedDimensionsList){
             println("Planting Bed Dimensions: ${dimensions.length} x ${dimensions.width} x ${dimensions.depth}")
         }
         println("Total Cubic Yards: ${calculateCubicYards()}")
         println("Total Cubic Feet: ${calculateCubicFeet()}")
-        if (footPrice < 0) {
-            println("Total Price: ${getFinalPriceYards()}")
-        }
-        else {
-            println("Total Price: $${getFinalPriceFeet()}")
-        }
+        println("Total Price: $${pricer.calculatePrice(calculateCubicYards())}")
     }
 }
