@@ -18,7 +18,7 @@ class MulchOrder(plantingBedDimensions: PlantingBedDimensions){
         return totalRounded.toInt()
     }
 
-    fun calculateCubicYards(): Int {
+    private fun calculateCubicYards(): Int {
         val total: Double = plantingBedDimensionsList.sumOf {it.length * it.width * (it.depth/12)}
         val totalConverted: Double = total / 27
         val totalRounded = ceil(totalConverted)
