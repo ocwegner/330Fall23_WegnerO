@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Mulch App</string>
+    <string name="mulch_type">Select Mulch Type</string>
+    <string name="premium_bark">Premium Bark Mulch</string>
+    <string name="special">Special Blend</string>
+    <string name="triple_ground">Triple Ground</string>
+    <string name="chocolate_dyed">Chocolate Dyed</string>
+    <string name="red_dyed">Red Dyed</string>
+    <string name="black_dyed">Black Dyed</string>
+    <string name="play_mat">Play Mat</string>
+    <string name="cedar">Cedar</string>
+    <string name="next_button">Next</string>
+    <string name="textview">TextView</string>
+    <string name="enter_number">Enter number of cubic yards:</string>
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="street">Street</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="zip_code">ZIP Code</string>
+    <string name="email_address">Email Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="delivery_charge">Delivery Charge:</string>
+    <string name="mulch_cost">Mulch Cost:</string>
+    <string name="sales_tax">Sales Tax:</string>
+    <string name="total">Total:</string>
+</resources>
