@@ -11,6 +11,7 @@
     <string name="cedar">Cedar</string>
     <string name="next_button">Next</string>
     <string name="textview">TextView</string>
+    <string name="price_per">"$ %s per cubic yard"</string>
     <string name="enter_number">Enter number of cubic yards:</string>
     <string name="plus_sign">+</string>
     <string name="minus_sign">-</string>

@@ -29,6 +29,7 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomLayout"
         android:layout_width="409dp"
         android:layout_height="661dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -104,7 +105,7 @@
             android:minHeight="48dp"
             android:textColorHint="#8D6E63"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/City" />
+            app:layout_constraintTop_toBottomOf="@+id/city" />
 
         <EditText
             android:id="@+id/street"
@@ -122,7 +123,7 @@
             app:layout_constraintTop_toBottomOf="@+id/deliveryTitle" />
 
         <EditText
-            android:id="@+id/City"
+            android:id="@+id/city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -223,7 +224,7 @@
             app:layout_constraintTop_toBottomOf="@+id/deliveryCharge" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/mulchCostText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="372dp"
@@ -235,7 +236,7 @@
             app:layout_constraintTop_toBottomOf="@+id/plusButton" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/salesTaxText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textview"
@@ -243,10 +244,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.379"
             app:layout_constraintStart_toEndOf="@+id/salesTax"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/mulchCostText" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/deliveryChargeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textview"
@@ -254,10 +255,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.373"
             app:layout_constraintStart_toEndOf="@+id/deliveryCharge"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/salesTaxText" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/totalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textview"
@@ -266,7 +267,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.389"
             app:layout_constraintStart_toEndOf="@+id/totalCost"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintTop_toBottomOf="@+id/deliveryChargeText"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
