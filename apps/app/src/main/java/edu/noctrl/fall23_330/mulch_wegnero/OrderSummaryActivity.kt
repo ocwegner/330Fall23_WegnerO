@@ -11,21 +11,22 @@ class OrderSummaryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_summary)
-        val shipping = intent.getStringExtra("shipping")
-        val shippingCost = shipping.toString()
+        val bundle = intent.extras
+        val shipping = bundle!!.getDouble("shipping", 0.0)
+        val address = bundle.getString("address", "didn't work")
 
-        isDeliverable(shippingCost)
+        val addressBox: TextView = findViewById(R.id.textViewforString)
+        addressBox.text = address
+
+        isDeliverable(shipping)
     }
-    private fun isDeliverable(shippingCost:String){
-        if (shippingCost == "0.0"){
+    private fun isDeliverable(shippingCost:Double){
+        if (shippingCost == 0.0){
             layout = findViewById(R.id.bottomLayout)
             val snackBar = Snackbar.make(layout, "Delivery not available for your area; pickup required.", Snackbar.LENGTH_LONG)
             snackBar.show()
         }
         val textBoxForDisplay : TextView = findViewById(R.id.newTextView)
         textBoxForDisplay.text = shippingCost.toString()
-    }
-    fun displayInformation(){
-
     }
 }

@@ -1,7 +1,6 @@
 package edu.noctrl.fall23_330.mulch_wegnero
 
 import android.content.Intent
-import android.os.Build.VERSION_CODES.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -28,16 +27,31 @@ class OrderMulchActivity : AppCompatActivity() {
         val titleBox: TextView = findViewById(R.id.mulch_order)
         titleBox.text = chosenType
 
-        writeAddress()
+        val addressMap = writeAddress()
+        val addressText = addressMap.getValue("address")
+        val stateText = addressMap.getValue("state")
+        val cityText = addressMap.getValue("city")
+        val zipCode = addressMap.getValue("zipCode")
+        val emailText = addressMap.getValue("email")
+        val phoneText = addressMap.getValue("phone")
 
         val mulchPrice = pricePerYard(chosenType.toString())
-        val shipping = writeShipping(zipCode.toString())
+        val shipping = writeShipping(zipCode)
         yardNumber(mulchPrice, shipping)
+
+        val bundle = Bundle()
+        bundle.putString("address", addressText)
+        bundle.putString("state", stateText)
+        bundle.putString("city", cityText)
+        bundle.putString("zipCode", zipCode)
+        bundle.putString("email", emailText)
+        bundle.putString("phone", phoneText)
+        bundle.putDouble("shipping", shipping)
 
         val nextButton: Button = findViewById(R.id.next_button)
         nextButton.setOnClickListener {
             val i = Intent(this@OrderMulchActivity, OrderSummaryActivity::class.java)
-            i.putExtra("shippingCost", shipping)
+            i.putExtras(bundle)
             startActivity(i)
         }
     }
@@ -101,13 +115,48 @@ class OrderMulchActivity : AppCompatActivity() {
     }
 
     //set address + contact info
-    private fun writeAddress(){
+    private fun writeAddress(): Map<String, String> {
+        var addressText = "AddressTest"
+        var stateText = "StateTest"
+        var cityText = "CityTest"
+        var zipCodeText = "ZipTest"
+        var emailText = "EmailTest"
+        var phoneText = "PhoneTest"
         address = findViewById(R.id.street)
+        address.setOnClickListener {
+            addressText = address.text.toString()
+        }
         state = findViewById(R.id.state)
+        state.setOnClickListener {
+            stateText = state.text.toString()
+        }
         city = findViewById(R.id.city)
+        city.setOnClickListener {
+            cityText = city.text.toString()
+        }
         zipCode = findViewById(R.id.zipCode)
+        zipCode.setOnClickListener {
+            zipCodeText = zipCode.text.toString()
+        }
         email = findViewById(R.id.emailAddress)
+        email.setOnClickListener {
+            emailText = email.text.toString()
+        }
         phone = findViewById(R.id.phoneNumber)
+        phone.setOnClickListener {
+            phoneText = phone.text.toString()
+        }
+
+        val shippingMap = mapOf(
+            Pair("address", addressText),
+            Pair("state", stateText),
+            Pair("city", cityText),
+            Pair("zipCode", zipCodeText),
+            Pair("email", emailText),
+            Pair("phone", phoneText)
+        )
+
+        return (shippingMap)
     }
 
     //get shipping cost from ZIP code
@@ -121,29 +170,28 @@ class OrderMulchActivity : AppCompatActivity() {
         Pair("60189", 35.0),
         Pair("60190", 40.0)
     )
+
     private fun writeShipping(zipCode: String): Double {
-        val intZipCode = zipCode
         for (pair in zipCodeMap) {
-            if (intZipCode == pair.key){
-                shippingCost = pair.value
-                delivery = findViewById(R.id.deliveryChargeText)
-                delivery.text = "$"+shippingCost
-            }
-            else shippingCost = 0.0
+            shippingCost = if (zipCode == pair.key) {
+                pair.value
+            } else 0.0
         }
+        delivery = findViewById(R.id.deliveryChargeText)
+        delivery.text = "$$shippingCost"
         return shippingCost
     }
 
     //put monetary info into text boxes
     private fun writeTextBoxes(mulchPriceTotal: Int, taxes: Double, shipping: Double) {
         cost = findViewById(R.id.mulchCostText)
-        cost.text = "$"+mulchPriceTotal.toString()
+        cost.text = "$$mulchPriceTotal"
 
         tax = findViewById(R.id.salesTaxText)
-        tax.text = "$"+taxes
+        tax.text = "$$taxes"
 
         total = findViewById(R.id.totalText)
         val totalCost = (mulchPriceTotal + taxes + shipping).toString()
-        total.text = "$"+totalCost
+        total.text = "$$totalCost"
     }
 }
