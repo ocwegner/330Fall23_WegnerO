@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
+
 
 class OrderMulchActivity : AppCompatActivity() {
     private lateinit var address: EditText
@@ -123,27 +125,27 @@ class OrderMulchActivity : AppCompatActivity() {
         var emailText = "EmailTest"
         var phoneText = "PhoneTest"
         address = findViewById(R.id.street)
-        address.setOnClickListener {
+        address.doAfterTextChanged {
             addressText = address.text.toString()
         }
         state = findViewById(R.id.state)
-        state.setOnClickListener {
+        state.doAfterTextChanged {
             stateText = state.text.toString()
         }
         city = findViewById(R.id.city)
-        city.setOnClickListener {
+        city.doAfterTextChanged {
             cityText = city.text.toString()
         }
         zipCode = findViewById(R.id.zipCode)
-        zipCode.setOnClickListener {
+        zipCode.doAfterTextChanged {
             zipCodeText = zipCode.text.toString()
         }
         email = findViewById(R.id.emailAddress)
-        email.setOnClickListener {
+        email.doAfterTextChanged {
             emailText = email.text.toString()
         }
         phone = findViewById(R.id.phoneNumber)
-        phone.setOnClickListener {
+        phone.doAfterTextChanged {
             phoneText = phone.text.toString()
         }
 
