@@ -26,4 +26,7 @@
     <string name="mulch_cost">Mulch Cost:</string>
     <string name="sales_tax">Sales Tax:</string>
     <string name="total">Total:</string>
+    <string name="zero_dollar">$0.0</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="delivering_numberofbags_yards_of_chosentype_to">Delivering (numberOfBags) yards of (chosenType) to:</string>
 </resources>
