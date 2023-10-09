@@ -125,6 +125,7 @@ class OrderMulchActivity : AppCompatActivity() {
                 writeTextBoxes(mulchPrice, taxes)
             }
         }
+        writeTextBoxes(mulchPrice,taxes)
         texts["bagNum"] = bagCount.toString()
         return texts
     }

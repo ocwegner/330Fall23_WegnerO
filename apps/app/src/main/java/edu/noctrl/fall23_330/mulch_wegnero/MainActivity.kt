@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         var chosenType = "Null"
 
         premiumBark.setOnClickListener {
-            chosenType = "Premium Bark"
+            chosenType = "Premium Bark Mulch"
         }
         specialBlend.setOnClickListener {
             chosenType = "Special Blend"
