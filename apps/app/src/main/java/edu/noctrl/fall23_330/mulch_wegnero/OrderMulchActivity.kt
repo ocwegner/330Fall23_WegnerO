@@ -99,7 +99,7 @@ class OrderMulchActivity : AppCompatActivity() {
         var mulchPrice = (perBagPrice * bagCount)
 
         var taxes = String.format("%.2f", mulchPrice * .0625).toDouble()
-        var texts = writeTextBoxes(mulchPrice, taxes)
+        writeTextBoxes(mulchPrice, taxes)
         bagCountText.text = "1"
 
         plusButton.setOnClickListener {
@@ -125,7 +125,9 @@ class OrderMulchActivity : AppCompatActivity() {
                 writeTextBoxes(mulchPrice, taxes)
             }
         }
-        writeTextBoxes(mulchPrice,taxes)
+        //var texts gets the value returned from the writeTextBoxes function. (starts @ line 169)
+        //the issue may be because of when the variable is set?
+        var texts = writeTextBoxes(mulchPrice,taxes)
         texts["bagNum"] = bagCount.toString()
         return texts
     }
@@ -175,6 +177,9 @@ class OrderMulchActivity : AppCompatActivity() {
         val totalCost = (mulchPriceTotal + taxes).toString()
         total.text = "$$totalCost"
 
+        //This map should be filled out with the proper information, as they are taking directly from the
+        //numbers being shown on the screen. I do not know why they are being reset as if the user is only buying
+        //one bag of mulch.
         return mutableMapOf("mulchPriceTotal" to mulchPriceTotal.toString(), "taxes" to taxes.toString(),
             "total" to totalCost, "bagNum" to "Empty")
     }
