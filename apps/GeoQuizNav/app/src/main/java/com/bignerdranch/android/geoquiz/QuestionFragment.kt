@@ -1,20 +1,23 @@
 package com.bignerdranch.android.geoquiz
 
-import android.app.Activity
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import com.bignerdranch.android.geoquiz.databinding.ActivityMainBinding
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.fragment.findNavController
+import com.bignerdranch.android.geoquiz.databinding.FragmentQuestionBinding
 
-private const val TAG = "MainActivity"
+private const val TAG = "QuestionFragment"
 private const val CURRENT_INDEX_KEY = "CURRENT_INDEX_KEY"
 
 class QuestionFragment : Fragment() {
+    private var _binding: FragmentQuestionBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var binding: ActivityMainBinding
     private val questionBank = listOf(
         Question(R.string.question_australia, true),
         Question(R.string.question_oceans, true),
@@ -26,26 +29,24 @@ class QuestionFragment : Fragment() {
     private var currentIndex = 0
     private var isCheater = false
 
-    private val cheatLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        // a lambda function to handle the result
-        if (result.resultCode == Activity.RESULT_OK) {
-            isCheater =
-                result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setFragmentResultListener(CheatFragment.CHEAT_RESULT_KEY){
+                _, bundle -> isCheater = bundle.getBoolean(CheatFragment.IS_CHEATER)
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentQuestionBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         if (savedInstanceState != null) {
             Log.d(TAG, "savedInstanceState is set.")
             currentIndex = savedInstanceState.getInt(CURRENT_INDEX_KEY, 0)
         }
-
-        binding = ActivityMainBinding.inflate(this.layoutInflater)
-        setContentView(binding.root)
-
         binding.questionText.setText(questionBank[currentIndex].testResId)
 
         binding.nextButton.setOnClickListener {
@@ -63,11 +64,22 @@ class QuestionFragment : Fragment() {
 
         binding.cheatButton.setOnClickListener {
             // Start the cheat activity
-            val intent = Intent(this, CheatActivity::class.java)
             val answer = questionBank[currentIndex].answer
-            intent.putExtra(EXTRA_ANSWER_KEY, answer)
-            cheatLauncher.launch(intent)
+            val action = QuestionFragmentDirections.actionQuestionFragmentToCheatFragment2(answer)
+            this.findNavController().navigate(action)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    // configuration changes.
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d(TAG, "onSaveInstanceState")
+        outState.putInt(CURRENT_INDEX_KEY, this.currentIndex)
     }
 
     private fun checkAnswer(userAnswer: Boolean) {
@@ -79,14 +91,7 @@ class QuestionFragment : Fragment() {
         }
         isCheater = false
 
-        Toast.makeText(this, resId, Toast.LENGTH_SHORT).show()
-    }
-
-    // configuration changes.
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Log.d(TAG, "onSaveInstanceState")
-        outState.putInt(CURRENT_INDEX_KEY, this.currentIndex)
+        Toast.makeText(this.context, resId, Toast.LENGTH_SHORT).show()
     }
 
     override fun onStart() {
