@@ -49,4 +49,9 @@ class CheatFragment : Fragment() {
             setFragmentResult(CHEAT_RESULT_KEY, bundleOf(IS_CHEATER to true))
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

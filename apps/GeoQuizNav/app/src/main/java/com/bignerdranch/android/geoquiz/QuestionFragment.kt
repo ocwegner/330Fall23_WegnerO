@@ -31,9 +31,8 @@ class QuestionFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setFragmentResultListener(CheatFragment.CHEAT_RESULT_KEY){
-                _, bundle -> isCheater = bundle.getBoolean(CheatFragment.IS_CHEATER)
-        }
+        setFragmentResultListener(CheatFragment.CHEAT_RESULT_KEY)
+        { _, bundle -> isCheater = bundle.getBoolean(CheatFragment.IS_CHEATER) }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
