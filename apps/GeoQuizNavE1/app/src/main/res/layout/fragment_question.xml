@@ -42,6 +42,13 @@
         android:text="@string/cheat_button" />
 
     <!-- TODO 6: Add an arrow svg to the Next button -->
+
+    <Button
+        android:id="@+id/previousButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go_back" />
+
     <Button
         android:id="@+id/next_button"
         android:layout_width="wrap_content"

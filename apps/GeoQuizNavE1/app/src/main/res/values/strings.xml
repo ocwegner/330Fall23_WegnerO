@@ -10,6 +10,21 @@
         in the Americas.</string>
     <string name="question_asia">Lake Baikal is the world\'s oldest and deepest
         freshwater lake.</string>
+    <string name="question_amazon">The Amazon River is the longest river in the world.</string>
+    <string name="question_uk">The United Kingdom includes the countries of England, Scotland, and Wales, but not Northern Ireland.</string>
+    <string name="question_antarctica">Antarctica is the driest continent on Earth.</string>
+    <string name="question_great_barrier_reef">The Great Barrier Reef is the world\'s largest coral reef system and is located in Australia.</string>
+    <string name="question_everest">Mount Everest is the tallest mountain in the world.</string>
+    <string name="question_chile">The country of Chile has a coastline along the Pacific Ocean but not the Atlantic Ocean.</string>
+    <string name="question_russia">Russia spans two continents, Europe and Asia.</string>
+    <string name="question_united_states">The United States has the largest number of time zones in the world.</string>
+    <string name="question_pacific">The Pacific Ocean is the largest and deepest ocean on Earth.</string>
+    <string name="question_dead_sea">The Dead Sea is actually a saltwater lake, not a sea.</string>
+    <string name="question_france">The Eiffel Tower is located in Paris, France.</string>
+    <string name="question_prime_meridian">The Prime Meridian runs through Greenwich, England.</string>
+    <string name="question_andes">The Andes Mountains are the longest mountain range in the world.</string>
+
+
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="correct_toast">Correct!</string>
@@ -22,4 +37,5 @@
     <string name="judgment_toast">Cheating is wrong.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="go_back">go back</string>
 </resources>
