@@ -111,7 +111,7 @@ class QuestionFragment : Fragment() {
             if (currentIndex == questionBank.size - 1){
                 fun displayScore() {
                     val finalScoreNum = (userScore.toDouble() / questionBank.size.toDouble()) * 100
-                    val finalScore = "%.2f".format(finalScoreNum.toString()) + "%"
+                    val finalScore = "%.4f".format(finalScoreNum) + "%"
                     val stringForToast = userScore.toString().plus(" out of ").plus(questionBank.size.toString()).plus(" correct. ").plus(finalScore)
                     Toast.makeText(this.context, stringForToast, Toast.LENGTH_SHORT).show()
                 }
