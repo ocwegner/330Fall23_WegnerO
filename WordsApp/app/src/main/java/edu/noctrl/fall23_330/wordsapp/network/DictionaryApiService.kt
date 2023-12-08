@@ -9,10 +9,6 @@ import retrofit2.http.Path
 private const val BASE_URL = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
 private const val API_KEY = "50b5b538-8dad-4f69-8b58-6333d47f58ee"
 
-/**
- * Use the Retrofit builder to build a retrofit object using a Moshi converter with our Moshi
- * object.
- */
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     .baseUrl(BASE_URL)
@@ -21,9 +17,11 @@ private val retrofit = Retrofit.Builder()
 
 interface DictionaryApiService {
     @GET("{word}?key=${API_KEY}")
-    suspend fun getWord(@Path("word") type: String): Response<String>
+    suspend fun getWord(@Path("word") word: String): Response<String>
 }
 
 object DictionaryApi{
-    val retrofitService: DictionaryApiService by lazy {retrofit.create(DictionaryApiService::class.java)}
+    val retrofitService: DictionaryApiService by lazy {
+        retrofit.create(DictionaryApiService::class.java)
+    }
 }

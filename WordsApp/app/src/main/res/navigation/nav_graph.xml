@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startingFragment">
+
+    <fragment
+        android:id="@+id/startingFragment"
+        android:name="edu.noctrl.fall23_330.wordsapp.screens.StartingFragment"
+        android:label="fragment_starting"
+        tools:layout="@layout/fragment_starting" >
+        <action
+            android:id="@+id/action_startingFragment_to_wordSearchFragment2"
+            app:destination="@id/wordSearchFragment" />
+        <action
+            android:id="@+id/action_startingFragment_to_definitionFragment"
+            app:destination="@id/definitionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWordFragment"
+        android:name="edu.noctrl.fall23_330.wordsapp.screens.AddWordFragment"
+        android:label="fragment_add_word"
+        tools:layout="@layout/fragment_add_word" >
+        <action
+            android:id="@+id/action_addWordFragment_to_startingFragment"
+            app:destination="@id/startingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/definitionFragment"
+        android:name="edu.noctrl.fall23_330.wordsapp.screens.DefinitionFragment"
+        android:label="fragment_definition"
+        tools:layout="@layout/fragment_definition" >
+        <action
+            android:id="@+id/action_definitionFragment_to_startingFragment"
+            app:destination="@id/startingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wordSearchFragment"
+        android:name="edu.noctrl.fall23_330.wordsapp.screens.WordSearchFragment"
+        android:label="fragment_word_search"
+        tools:layout="@layout/fragment_word_search" >
+        <action
+            android:id="@+id/action_wordSearchFragment_to_addWordFragment"
+            app:destination="@id/addWordFragment" />
+    </fragment>
+</navigation>
