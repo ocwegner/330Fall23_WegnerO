@@ -14,6 +14,7 @@ import edu.noctrl.fall23_330.wordsapp.ItemAdapter
 import edu.noctrl.fall23_330.wordsapp.R
 import edu.noctrl.fall23_330.wordsapp.ViewModel
 import edu.noctrl.fall23_330.wordsapp.ViewModelFactory
+import edu.noctrl.fall23_330.wordsapp.WordListener
 import edu.noctrl.fall23_330.wordsapp.WordsApp
 import edu.noctrl.fall23_330.wordsapp.databinding.FragmentStartingBinding
 import kotlinx.coroutines.flow.collect
@@ -33,11 +34,12 @@ class StartingFragment : Fragment(){
         _binding = FragmentStartingBinding.inflate(inflater, container, false)
 
         return binding.root
+
+        //TODO: figure out how to implement onClick stuff for when a word in the list is clicked
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         recyclerView = binding.RecyclerView
         val itemAdapter = ItemAdapter()
         recyclerView.adapter = itemAdapter
@@ -52,6 +54,6 @@ class StartingFragment : Fragment(){
         addButton.setOnClickListener{
             findNavController().navigate(R.id.wordSearchFragment)
         }
-
     }
+
 }

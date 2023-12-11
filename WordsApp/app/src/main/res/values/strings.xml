@@ -11,4 +11,10 @@
     <string name="textview">TextView</string>
     <string name="search">Search</string>
     <string name="plus_button">+</string>
+    <string name="word_search">Word Search</string>
+    <string name="todo">TODO</string>
+    <string name="home">Home</string>
+    <string name="a_button_to_return_to_the_previous_screen">A button to return to the previous screen.</string>
+    <string name="word_definition">Word Definition</string>
+    <string name="add_word">Add Word</string>
 </resources>

@@ -8,6 +8,9 @@ import kotlinx.coroutines.flow.Flow
 
 class ViewModel(private val dictionaryDao: DictionaryDao): ViewModel(){
     fun fullList(): Flow<List<WordsDataClass>> = dictionaryDao.getAll()
+    fun onWordClicked(){
+        //TODO: look at amphibians app for implementation
+    }
 }
 
 class ViewModelFactory(private val dictionaryDao: DictionaryDao): ViewModelProvider.Factory{
