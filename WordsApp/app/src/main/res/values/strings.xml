@@ -18,4 +18,6 @@
     <string name="word_definition">Word Definition</string>
     <string name="add_word">Add Word</string>
     <string name="search_for_words_here">Search for words here:</string>
+    <string name="add_word_button">Add Word</string>
+    <string name="add_word_menu">Add Word Menu</string>
 </resources>

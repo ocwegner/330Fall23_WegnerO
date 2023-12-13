@@ -33,7 +33,7 @@
             android:layout_width="256dp"
             android:layout_height="38dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Add Word"
+            android:text="@string/add_word_menu"
             android:textAlignment="center"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -77,31 +77,37 @@
 
         <TextView
             android:id="@+id/wordDef2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="88dp"
-            android:text="TextView"
+            android:layout_marginEnd="36dp"
+            android:text="@string/textview"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wordDef" />
 
         <TextView
             android:id="@+id/wordDef"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="36dp"
             android:text="@string/textview"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wordArt" />
 
         <TextView
             android:id="@+id/wordDef3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="80dp"
-            android:text="TextView"
+            android:layout_marginEnd="36dp"
+            android:text="@string/textview"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wordDef2" />
 

@@ -40,9 +40,10 @@ class AddWordFragment : Fragment() {
         val def2Display = binding.wordDef2
         val def3Display = binding.wordDef3
         val artId = binding.wordArt
+
         wordNameDisplay.text = viewModel.word.value?.word
-        //def1Display.text = viewModel.word.value?.shortDef1
-        //def2Display.text = viewModel.word.value?.shortDef2
-        //def3Display.text = viewModel.word.value?.shortDef3
+        def1Display.text = viewModel.word.value?.shortDef1
+        def2Display.text = viewModel.word.value?.shortDef2
+        def3Display.text = viewModel.word.value?.shortDef3
     }
 }
