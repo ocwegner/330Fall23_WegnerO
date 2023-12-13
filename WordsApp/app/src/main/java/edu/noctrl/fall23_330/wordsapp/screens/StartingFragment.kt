@@ -41,7 +41,8 @@ class StartingFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.RecyclerView
-        val itemAdapter = ItemAdapter()
+        val itemAdapter = ItemAdapter(WordListener { wordChosen -> viewModel.onWordClicked(wordChosen)
+            findNavController().navigate(R.id.action_startingFragment_to_definitionFragment)})
         recyclerView.adapter = itemAdapter
         lifecycle.coroutineScope.launch {
             viewModel.fullList().collect() {

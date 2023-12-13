@@ -9,7 +9,7 @@ import edu.noctrl.fall23_330.wordsapp.databinding.FragmentStartingBinding
 import edu.noctrl.fall23_330.wordsapp.databinding.RecyclerViewBinding
 import edu.noctrl.fall23_330.wordsapp.network.WordsDataClass
 
-class ItemAdapter(): ListAdapter<WordsDataClass, ItemAdapter.WordHolder>(DiffCallback){
+class ItemAdapter(private val clickListener: WordListener): ListAdapter<WordsDataClass, ItemAdapter.WordHolder>(DiffCallback){
    companion object {
        private val DiffCallback = object : DiffUtil.ItemCallback<WordsDataClass>(){
            override fun areItemsTheSame(oldItem: WordsDataClass, newItem: WordsDataClass): Boolean {

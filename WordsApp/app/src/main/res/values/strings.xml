@@ -17,4 +17,5 @@
     <string name="a_button_to_return_to_the_previous_screen">A button to return to the previous screen.</string>
     <string name="word_definition">Word Definition</string>
     <string name="add_word">Add Word</string>
+    <string name="search_for_words_here">Search for words here:</string>
 </resources>
